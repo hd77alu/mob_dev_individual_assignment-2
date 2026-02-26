@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "793576467691",
+    "project_id": "mobdevindividualassignment2",
+    "storage_bucket": "mobdevindividualassignment2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793576467691:android:c7f4235737d58795eaa2ae",
+        "android_client_info": {
+          "package_name": "com.example.individual_assignment_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsGJOR86dio--ShoGpSViiVZFcJsYmITU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
