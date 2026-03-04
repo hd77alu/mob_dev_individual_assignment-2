@@ -15,7 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // Listen to auth state changes
     _authStateSubscription = _authService.authStateChanges.listen((user) {
       add(const AuthCheckRequested());
-    });
+    }); 
 
     on<AuthCheckRequested>(_onAuthCheckRequested);
     on<SignUpRequested>(_onSignUpRequested);
@@ -127,8 +127,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final isVerified = await _authService.isEmailVerified();
       emit(AuthSuccess(
         isVerified
-            ? '✅ Email is verified! Firestore updated.'
-            : '⚠️ Email not yet verified. Please check your inbox.',
+            ? 'Email is verified! Firestore updated.'
+            : 'Email not yet verified. Please check your inbox.',
       ));
       // Reload user to get updated emailVerified status
       await currentUser.reload();

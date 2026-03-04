@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'firebase_options.dart';
-import 'screens/auth_test_screen.dart';
 import 'services/auth_service.dart';
 import 'blocs/auth/auth_bloc.dart';
 import 'blocs/auth/auth_event.dart';
+import 'screens/auth_wrapper.dart';
+import 'screens/auth/signup_screen.dart';
+import 'screens/auth/login_screen.dart';
+import 'utils/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,11 +29,13 @@ class MainApp extends StatelessWidget {
       )..add(const AuthCheckRequested()),
       child: MaterialApp(
         title: 'Kigali City Services',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-        ),
-        home: const AuthTestScreen(),
+        theme: AppTheme.theme,
+        debugShowCheckedModeBanner: false,
+        home: const AuthWrapper(),
+        routes: {
+          '/login': (context) => const LoginScreen(),
+          '/signup': (context) => const SignUpScreen(),
+        },
       ),
     );
   }
