@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../directory/directory_screen.dart';
 import '../listings/my_listings_screen.dart';
 import '../map/map_view_screen.dart';
 import '../settings/settings_screen.dart';
+import '../../blocs/listing/listing_bloc.dart';
+import '../../blocs/listing/listing_event.dart';
 import '../../utils/app_theme.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,6 +27,29 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    // Initialize with the first tab (Directory - all listings)
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _handleTabChange(0);
+    });
+  }
+
+  void _handleTabChange(int index) {
+    // Switch to the appropriate listings stream based on tab
+    if (index == 0) {
+      // Directory tab - show all listings
+      context.read<ListingBloc>().add(const ListenToAllListings());
+    } else if (index == 1) {
+      // My Listings tab - show user's listings
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        context.read<ListingBloc>().add(ListenToUserListings(user.uid));
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
@@ -35,6 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _currentIndex = index;
           });
+          // Switch to appropriate stream based on selected tab
+          _handleTabChange(index);
         },
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppTheme.primaryDark,

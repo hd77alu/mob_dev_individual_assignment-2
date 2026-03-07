@@ -3,8 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'firebase_options.dart';
 import 'services/auth_service.dart';
+import 'services/listing_service.dart';
 import 'blocs/auth/auth_bloc.dart';
 import 'blocs/auth/auth_event.dart';
+import 'blocs/listing/listing_bloc.dart';
 import 'screens/auth_wrapper.dart';
 import 'screens/auth/signup_screen.dart';
 import 'screens/auth/login_screen.dart';
@@ -23,10 +25,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(
-        authService: AuthService(),
-      )..add(const AuthCheckRequested()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc(
+            authService: AuthService(),
+          )..add(const AuthCheckRequested()),
+        ),
+        BlocProvider(
+          create: (context) => ListingBloc(ListingService()),
+        ),
+      ],
       child: MaterialApp(
         title: 'Kigali City Services',
         theme: AppTheme.theme,
