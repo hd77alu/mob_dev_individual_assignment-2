@@ -18,6 +18,7 @@ class ListingBloc extends Bloc<ListingEvent, ListingState> {
     on<ListenToAllListings>(_onListenToAllListings);
     on<ListenToUserListings>(_onListenToUserListings);
     on<UpdateListingsFromStream>(_onUpdateListingsFromStream);
+    on<StopListeningToListings>(_onStopListeningToListings);
   }
 
   Future<void> _onLoadAllListings(
@@ -166,6 +167,15 @@ class ListingBloc extends Bloc<ListingEvent, ListingState> {
     // Always emit the latest listings from Firestore stream, 
     // even if we're in a success state
     emit(ListingLoaded(event.listings));
+  }
+
+  Future<void> _onStopListeningToListings(
+    StopListeningToListings event,
+    Emitter<ListingState> emit,
+  ) async {
+    await _listingsSubscription?.cancel();
+    _listingsSubscription = null;
+    emit(const ListingInitial());
   }
 
   @override

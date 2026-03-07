@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../../models/listing.dart';
-import '../../../utils/app_theme.dart';
+import '../models/listing.dart';
+import '../utils/app_theme.dart';
 
 class ListingCard extends StatelessWidget {
   final Listing listing;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../blocs/auth/auth_bloc.dart';
-import '../../blocs/auth/auth_event.dart';
-import '../../blocs/auth/auth_state.dart';
+import '../../blocs/auth_management/auth_bloc.dart';
+import '../../blocs/auth_management/auth_event.dart';
+import '../../blocs/auth_management/auth_state.dart';
+import '../../blocs/listing_management/listing_bloc.dart';
+import '../../blocs/listing_management/listing_event.dart';
 import '../../utils/app_theme.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -153,6 +155,7 @@ class SettingsScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
+                    context.read<ListingBloc>().add(const StopListeningToListings());
                     context.read<AuthBloc>().add(const SignOutRequested());
                   },
                   style: ElevatedButton.styleFrom(

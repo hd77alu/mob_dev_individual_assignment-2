@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../blocs/listing/listing_bloc.dart';
-import '../../blocs/listing/listing_event.dart';
-import '../../blocs/listing/listing_state.dart';
+import '../../blocs/listing_management/listing_bloc.dart';
+import '../../blocs/listing_management/listing_event.dart';
+import '../../blocs/listing_management/listing_state.dart';
 import '../../models/listing.dart';
 import '../../utils/app_theme.dart';
 import '../listings/add_edit_listing_screen.dart';
-import 'widgets/listing_card.dart';
+import '../../widgets/listing_card.dart';
 
 class DirectoryScreen extends StatefulWidget {
   const DirectoryScreen({super.key});

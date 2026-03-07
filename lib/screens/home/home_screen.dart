@@ -5,8 +5,8 @@ import '../directory/directory_screen.dart';
 import '../listings/my_listings_screen.dart';
 import '../map/map_view_screen.dart';
 import '../settings/settings_screen.dart';
-import '../../blocs/listing/listing_bloc.dart';
-import '../../blocs/listing/listing_event.dart';
+import '../../blocs/listing_management/listing_bloc.dart';
+import '../../blocs/listing_management/listing_event.dart';
 import '../../utils/app_theme.dart';
 
 class HomeScreen extends StatefulWidget {

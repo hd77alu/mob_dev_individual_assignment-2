@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../blocs/auth/auth_bloc.dart';
-import '../../blocs/auth/auth_event.dart';
-import '../../blocs/auth/auth_state.dart';
+import '../../blocs/auth_management/auth_bloc.dart';
+import '../../blocs/auth_management/auth_event.dart';
+import '../../blocs/auth_management/auth_state.dart';
 import '../../utils/app_theme.dart';
 
 class EmailVerificationScreen extends StatelessWidget {

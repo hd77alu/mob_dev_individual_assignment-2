@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../blocs/auth/auth_bloc.dart';
-import '../../blocs/auth/auth_event.dart';
-import '../../blocs/auth/auth_state.dart';
+import '../../blocs/auth_management/auth_bloc.dart';
+import '../../blocs/auth_management/auth_event.dart';
+import '../../blocs/auth_management/auth_state.dart';
 import '../../utils/app_theme.dart';
-import '../auth_wrapper.dart';
+import 'auth_wrapper.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

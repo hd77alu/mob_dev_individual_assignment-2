@@ -78,3 +78,8 @@ class UpdateListingsFromStream extends ListingEvent {
   @override
   List<Object> get props => [listings];
 }
+
+// Stop listening to any active listings stream
+class StopListeningToListings extends ListingEvent {
+  const StopListeningToListings();
+}
