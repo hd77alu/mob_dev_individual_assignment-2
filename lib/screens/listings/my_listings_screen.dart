@@ -93,7 +93,7 @@ class _MyListingsScreenState extends State<MyListingsScreen> with AutomaticKeepA
                     Icon(
                       Icons.list_alt,
                       size: 80,
-                      color: AppTheme.primaryYellow.withOpacity(0.5),
+                      color: AppTheme.primaryYellow.withValues(alpha: 0.5),
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -184,7 +184,7 @@ class _MyListingsScreenState extends State<MyListingsScreen> with AutomaticKeepA
                     Icon(
                       Icons.list_alt,
                       size: 80,
-                      color: AppTheme.primaryYellow.withOpacity(0.5),
+                      color: AppTheme.primaryYellow.withValues(alpha: 0.5),
                     ),
                     const SizedBox(height: 16),
                     Text(

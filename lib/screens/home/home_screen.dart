@@ -12,6 +12,9 @@ import '../../utils/app_theme.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  /// Set this to switch the active tab from anywhere in the app.
+  static final ValueNotifier<int> tabNotifier = ValueNotifier(0);
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -29,16 +32,31 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    HomeScreen.tabNotifier.addListener(_onTabNotifier);
     // Initialize with the first tab (Directory - all listings)
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _handleTabChange(0);
     });
   }
 
+  void _onTabNotifier() {
+    final index = HomeScreen.tabNotifier.value;
+    setState(() {
+      _currentIndex = index;
+    });
+    _handleTabChange(index);
+  }
+
+  @override
+  void dispose() {
+    HomeScreen.tabNotifier.removeListener(_onTabNotifier);
+    super.dispose();
+  }
+
   void _handleTabChange(int index) {
     // Switch to the appropriate listings stream based on tab
-    if (index == 0) {
-      // Directory tab - show all listings
+    if (index == 0 || index == 2) {
+      // Directory tab and Map tab - show all listings
       context.read<ListingBloc>().add(const ListenToAllListings());
     } else if (index == 1) {
       // My Listings tab - show user's listings

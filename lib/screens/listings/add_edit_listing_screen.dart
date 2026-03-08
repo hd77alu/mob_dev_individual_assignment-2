@@ -94,25 +94,24 @@ class _AddEditListingScreenState extends State<AddEditListingScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<ListingBloc, ListingState>(
-      listener: (context, state) {
+      listener: (listenerContext, state) {
         if (state is ListingOperationSuccess) {
           setState(() {
             _isLoading = false;
           });
-          ScaffoldMessenger.of(context).showSnackBar(
+          ScaffoldMessenger.of(listenerContext).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
-          // Delay navigation to allow Firestore stream to update
+          // Capture navigator before async gap so no BuildContext is used after it
+          final navigator = Navigator.of(context);
           Future.delayed(const Duration(milliseconds: 300), () {
-            if (mounted) {
-              Navigator.of(context).pop(true);
-            }
+            if (mounted) navigator.pop(true);
           });
         } else if (state is ListingError) {
           setState(() {
             _isLoading = false;
           });
-          ScaffoldMessenger.of(context).showSnackBar(
+          ScaffoldMessenger.of(listenerContext).showSnackBar(
             SnackBar(
               content: Text(state.message),
               backgroundColor: Colors.red,
@@ -152,7 +151,7 @@ class _AddEditListingScreenState extends State<AddEditListingScreen> {
 
                       // Category dropdown
                       DropdownButtonFormField<String>(
-                        value: _selectedCategory,
+                        initialValue: _selectedCategory,
                         decoration: const InputDecoration(
                           labelText: 'Category *',
                           border: OutlineInputBorder(),

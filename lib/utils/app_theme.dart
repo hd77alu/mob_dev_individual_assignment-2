@@ -33,14 +33,14 @@ class AppTheme {
       // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white.withOpacity(0.1),
+        fillColor: Colors.white.withValues(alpha: 0.1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: lightGrey),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: lightGrey.withOpacity(0.3)),
+          borderSide: BorderSide(color: lightGrey.withValues(alpha: 0.3)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -51,7 +51,7 @@ class AppTheme {
           borderSide: const BorderSide(color: error),
         ),
         labelStyle: const TextStyle(color: lightGrey),
-        hintStyle: TextStyle(color: grey.withOpacity(0.6)),
+        hintStyle: TextStyle(color: grey.withValues(alpha: 0.6)),
         prefixIconColor: lightGrey,
       ),
       

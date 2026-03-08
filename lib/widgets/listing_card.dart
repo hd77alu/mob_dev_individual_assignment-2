@@ -60,7 +60,7 @@ class ListingCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: AppTheme.primaryYellow.withOpacity(0.2),
+                      color: AppTheme.primaryYellow.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(
@@ -91,7 +91,7 @@ class ListingCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: AppTheme.primaryYellow.withOpacity(0.3),
+                            color: AppTheme.primaryYellow.withValues(alpha: 0.3),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(

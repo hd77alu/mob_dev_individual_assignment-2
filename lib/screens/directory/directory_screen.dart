@@ -7,6 +7,7 @@ import '../../models/listing.dart';
 import '../../utils/app_theme.dart';
 import '../listings/add_edit_listing_screen.dart';
 import '../../widgets/listing_card.dart';
+import 'listing_detail_screen.dart';
 
 class DirectoryScreen extends StatefulWidget {
   const DirectoryScreen({super.key});
@@ -135,7 +136,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> with AutomaticKeepAli
                               Icon(
                                 Icons.explore,
                                 size: 80,
-                                color: AppTheme.primaryYellow.withOpacity(0.5),
+                                color: AppTheme.primaryYellow.withValues(alpha: 0.5),
                               ),
                               const SizedBox(height: 16),
                               Text(
@@ -164,7 +165,19 @@ class _DirectoryScreenState extends State<DirectoryScreen> with AutomaticKeepAli
                             padding: const EdgeInsets.all(8.0),
                             itemCount: filteredListings.length,
                             itemBuilder: (context, index) {
-                              return ListingCard(listing: filteredListings[index]);
+                              return ListingCard(
+                                listing: filteredListings[index],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => ListingDetailScreen(
+                                        listing: filteredListings[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
                             },
                           ),
                         ),
@@ -257,7 +270,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> with AutomaticKeepAli
                               Icon(
                                 Icons.explore,
                                 size: 80,
-                                color: AppTheme.primaryYellow.withOpacity(0.5),
+                                color: AppTheme.primaryYellow.withValues(alpha: 0.5),
                               ),
                               const SizedBox(height: 16),
                               Text(
@@ -286,7 +299,19 @@ class _DirectoryScreenState extends State<DirectoryScreen> with AutomaticKeepAli
                             padding: const EdgeInsets.all(8.0),
                             itemCount: filteredListings.length,
                             itemBuilder: (context, index) {
-                              return ListingCard(listing: filteredListings[index]);
+                              return ListingCard(
+                                listing: filteredListings[index],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => ListingDetailScreen(
+                                        listing: filteredListings[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
                             },
                           ),
                         ),
