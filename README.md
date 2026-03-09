@@ -1,4 +1,4 @@
-# Kigali City Services
+# Kigali City Services & Places Directory Mobile Application
 
 A Flutter mobile application that helps Kigali residents locate and navigate to essential public services as well as leisure and lifestyle locations such as hospitals, police stations, public libraries, utility offices, restaurants, cafés, parks, and tourist attractions.
 
@@ -9,7 +9,7 @@ A Flutter mobile application that helps Kigali residents locate and navigate to 
 - **User Authentication** — Email/password sign-up and sign-in with Firebase Authentication.
 - **Service Directory** — Browse all submitted listings with real-time updates. Filter by category and search by name, address, or description.
 - **My Listings** — Authenticated users can create, edit, and delete their own listings.
-- **Listing Detail** — View full listing information including an embedded map, coordinates, contact details, and a "Get Directions" button that launches Google Maps externally.
+- **Listing Detail** — View full listing information, including an embedded map, coordinates, contact details, and a "Get Directions" button that launches Google Maps externally.
 - **Map View** — See all listings as tappable markers on a full-screen interactive map. Tapping a marker navigates to the listing's detail screen.
 - **Cross-screen Tab Navigation** — The detail screen includes a shortcut button that switches directly to the Map tab from anywhere in the app.
 - **Settings** — Displays the current user's profile (name, email, verification status) and a toggle for enabling/disabling location-based notification preferences (persisted locally via `SharedPreferences`).
@@ -138,7 +138,7 @@ classDiagram
         +timestamp : Timestamp
     }
 
-    users "1" --> "0..*" listings : createdBy (uid)
+    users "1" --> "0..*" listings: createdBy (uid)
 ```
 
 ### `users` collection
@@ -204,7 +204,7 @@ AuthWrapper
 ```
 
 - **`AuthWrapper`** listens to `AuthBloc` and renders the correct root screen based on auth state and email verification.
-- **`HomeScreen`** uses a `BottomNavigationBar` with an `IndexedStack` to preserve tab state. It exposes a `static ValueNotifier<int> tabNotifier` that any screen can write to in order to switch tabs programmatically (used by `ListingDetailScreen` to jump to the Map tab).
+- **`HomeScreen`** uses a `BottomNavigationBar` with an `IndexedStack` to preserve tab state. It exposes a `static ValueNotifier<int> tabNotifier` that any screen can write to switch tabs programmatically (used by `ListingDetailScreen` to jump to the Map tab).
 - All screens use `AutomaticKeepAliveClientMixin` where appropriate to prevent unnecessary rebuilds when switching tabs.
 
 ---
