@@ -1,4 +1,5 @@
 # Kigali City Services & Places Directory Mobile Application
+![image alt](https://github.com/hd77alu/Portfolio101/blob/b448a8a6e40e7060de6d4afd253029a48ef6065c/images/kigali-city-all.png)
 
 A Flutter mobile application that helps Kigali residents locate and navigate to essential public services as well as leisure and lifestyle locations such as hospitals, police stations, public libraries, utility offices, restaurants, cafés, parks, and tourist attractions.
 
